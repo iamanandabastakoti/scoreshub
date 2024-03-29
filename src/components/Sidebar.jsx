@@ -1,39 +1,40 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
-const Sidebar = ({ sidebar }) => {
+const Sidebar = ({ sidebar, setSidebar }) => {
+    // {
+    //     leagueId: 3,
+    //         leagueLogo: '/topleagues/ucl.png',
+    //             leagueName: 'UEFA Champions League',
+    //     },
+    // {
+    //     leagueId: 4,
+    //         leagueLogo: '/topleagues/europa.png',
+    //             leagueName: 'UEFA Europa League',
+    //     },
     const topLeaguesList = [
         {
-            leagueId: '',
-            leagueLogo: '/topleagues/ucl.png',
-            leagueName: 'UEFA Champions League',
-        },
-        {
-            leagueId: '',
-            leagueLogo: '/topleagues/europa.png',
-            leagueName: 'UEFA Europa League',
-        },
-        {
-            leagueId: '',
+            leagueId: 152,
             leagueLogo: '/topleagues/pl.png',
             leagueName: 'Premier League',
         },
         {
-            leagueId: '',
+            leagueId: 302,
             leagueLogo: '/topleagues/laliga.png',
             leagueName: 'LaLiga',
         },
         {
-            leagueId: '',
+            leagueId: 175,
             leagueLogo: '/topleagues/bundesliga.png',
             leagueName: 'Bundesliga',
         },
         {
-            leagueId: '',
+            leagueId: 207,
             leagueLogo: '/topleagues/seriea.png',
             leagueName: 'Serie A',
         },
         {
-            leagueId: '',
+            leagueId: 168,
             leagueLogo: '/topleagues/league1.png',
             leagueName: 'League 1',
         },
@@ -41,13 +42,14 @@ const Sidebar = ({ sidebar }) => {
     return (
         <div className={`z-40 bg-primaryBg text-brandColor h-full top-0 pt-12 px-2 flex flex-col w-full overflow-hidden absolute duration-1000 ${sidebar ? `left-0` : `left-[-100%]`}`}>
             <div className='flex flex-col gap-3 p-2 font-Prompt'>
+                <h3 className='text-2xl font-semibold border-b-2 border-brandColor w-fit px-2'>Top Leagues</h3>
                 {
-                    topLeaguesList.map(({ index, leagueLogo, leagueName }) => {
+                    topLeaguesList.map(({ index, leagueId, leagueLogo, leagueName }) => {
                         return (
-                            <div key={index} className='flex gap-2 items-center text-brandColor border-b border-brandColor p-2'>
+                            <Link to={`/league/${leagueId}`} key={index} className='flex gap-2 items-center text-brandColor border-b border-brandColor p-2' onClick={() => setSidebar(!sidebar)}>
                                 <img className='w-8 h-8' src={leagueLogo} alt={leagueName} />
                                 <span>{leagueName}</span>
-                            </div>
+                            </Link>
                         )
                     })
                 }

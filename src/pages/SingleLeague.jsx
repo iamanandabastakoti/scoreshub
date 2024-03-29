@@ -1,0 +1,70 @@
+import React, { useState } from 'react'
+import { useParams } from 'react-router-dom'
+
+const SingleLeague = () => {
+    const { leagueID } = useParams();
+    // console.log(leagueID);
+    const topLeaguesList = [
+        {
+            leagueId: '3',
+            leagueLogo: '/topleagues/ucl.png',
+            leagueName: 'UEFA Champions League',
+        },
+        {
+            leagueId: '4',
+            leagueLogo: '/topleagues/europa.png',
+            leagueName: 'UEFA Europa League',
+        },
+        {
+            leagueId: '152',
+            leagueLogo: '/topleagues/pl.png',
+            leagueName: 'Premier League',
+            leagueCountry: 'England',
+        },
+        {
+            leagueId: '302',
+            leagueLogo: '/topleagues/laliga.png',
+            leagueName: 'LaLiga',
+            leagueCountry: 'Spain',
+        },
+        {
+            leagueId: '175',
+            leagueLogo: '/topleagues/bundesliga.png',
+            leagueName: 'Bundesliga',
+            leagueCountry: 'Germany',
+        },
+        {
+            leagueId: '207',
+            leagueLogo: '/topleagues/seriea.png',
+            leagueName: 'Serie A',
+            leagueCountry: 'Italy',
+        },
+        {
+            leagueId: '168',
+            leagueLogo: '/topleagues/league1.png',
+            leagueName: 'League 1',
+            leagueCountry: 'France',
+        },
+    ]
+    const singleLeagueData = topLeaguesList.filter(league => league.leagueId === leagueID);
+    // console.log(singleLeagueData)
+    return (
+        <div className='flex flex-col'>
+            {
+                singleLeagueData.map(({ index, leagueLogo, leagueName, leagueCountry }) => {
+                    return (
+                        <div key={index} className='flex justify-start items-center gap-2 p-1 bg-primaryBg text-primaryText rounded-lg'>
+                            <img className='w-10 h-10' src={leagueLogo} alt="" />
+                            <div className='flex flex-col justify-center'>
+                                <h3 className='text-lg font-semibold'>{leagueName}</h3>
+                                <span className='text-sm text-subTitleColor'>{leagueCountry}</span>
+                            </div>
+                        </div>
+                    )
+                })
+            }
+        </div>
+    )
+}
+
+export default SingleLeague

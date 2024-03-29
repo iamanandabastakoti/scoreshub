@@ -18,6 +18,7 @@ export default {
         brandColor: "#32127A",
         buttonColor: "#8C00FF",
         borderColor: "#C0C0C0",
+        subTitleColor: "#536878",
       },
     },
   },
