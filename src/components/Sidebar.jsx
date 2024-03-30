@@ -40,7 +40,7 @@ const Sidebar = ({ sidebar, setSidebar }) => {
         },
     ]
     return (
-        <div className={`z-40 bg-primaryBg text-brandColor h-full top-0 pt-12 px-2 flex flex-col w-full overflow-hidden absolute duration-1000 ${sidebar ? `left-0` : `left-[-100%]`}`}>
+        <div className={`z-[500] bg-primaryBg text-brandColor h-full top-0 pt-12 px-2 flex flex-col w-full overflow-hidden absolute duration-1000 ${sidebar ? `left-0` : `left-[-100%]`}`}>
             <div className='flex flex-col gap-3 p-2 font-Prompt'>
                 <h3 className='text-2xl font-semibold border-b-2 border-brandColor w-fit px-2'>Top Leagues</h3>
                 {
