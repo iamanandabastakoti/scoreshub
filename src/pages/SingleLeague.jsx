@@ -1,5 +1,7 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
+import LeagueStandings from '../components/LeagueStandings';
+import axios from 'axios';
 
 const SingleLeague = () => {
     const { leagueID } = useParams();
@@ -47,7 +49,17 @@ const SingleLeague = () => {
         },
     ]
     const singleLeagueData = topLeaguesList.filter(league => league.leagueId === leagueID);
-    const [statsBox, setStatsBox] = useState(1);
+    const [statsBox, setStatsBox] = useState(2);
+    const [leagueStandings, setLeagueStandings] = useState([]);
+    const fetchStandings = async () => {
+        const response = await axios.get(`https://apiv3.apifootball.com/?league_id=${leagueID}&action=get_standings&APIkey=${import.meta.env.VITE_API_KEY}`);
+        setLeagueStandings(response.data);
+        // console.log(leagueStandings);
+    }
+    useEffect(() => {
+        window.scrollTo({ top: '0', behavior: 'smooth' });
+        fetchStandings();
+    }, [leagueID]);
     // console.log(singleLeagueData)
     return (
         <div className='flex flex-col gap-6'>
@@ -66,21 +78,21 @@ const SingleLeague = () => {
             }
             <div className='min-h-80 w-full flex flex-col gap-2'>
                 <ul className='flex items-center w-full shadow-sm shadow-navbarBg relative'>
-                    <div className={`absolute z-30 bg-primaryBg w-1/3 h-full duration-500 rounded-lg ${statsBox === 1 ? `left-0` : statsBox === 2 ? `left-1/3` : statsBox === 3 ? `left-2/3` : ``}`}>
+                    <div className={`absolute z-30 bg-primaryBg w-1/2 h-full duration-500 rounded-lg ${statsBox === 2 ? `left-0` : statsBox === 3 ? `left-1/2` : ``}`}>
                     </div>
-                    <li className={`relative z-40 text-lg p-1 px-2 w-1/3 flex justify-center duration-500 ${statsBox === 1 ? `text-brandColor` : `text-primaryBg`}`} onClick={() => setStatsBox(1)}>Matches</li>
-                    <li className={`relative z-40 text-lg p-1 px-2 w-1/3 flex justify-center duration-500 ${statsBox === 2 ? `text-brandColor` : `text-primaryBg`}`} onClick={() => setStatsBox(2)}>Standings</li>
-                    <li className={`relative z-40 text-lg p-1 px-2 w-1/3 flex justify-center duration-500 ${statsBox === 3 ? `text-brandColor` : `text-primaryBg`}`} onClick={() => setStatsBox(3)}>Stats</li>
+                    {/* <li className={`relative z-40 text-lg p-1 px-2 w-1/3 flex justify-center duration-500 ${statsBox === 1 ? `text-brandColor` : `text-primaryBg`}`} onClick={() => setStatsBox(1)}>Matches</li> */}
+                    <li className={`relative z-40 text-lg p-1 px-2 w-1/2 flex justify-center duration-500 ${statsBox === 2 ? `text-brandColor` : `text-primaryBg`}`} onClick={() => setStatsBox(2)}>Standings</li>
+                    <li className={`relative z-40 text-lg p-1 px-2 w-1/2 flex justify-center duration-500 ${statsBox === 3 ? `text-brandColor` : `text-primaryBg`}`} onClick={() => setStatsBox(3)}>Stats</li>
                 </ul>
-                <div className='flex justify-center pt-4'>
-                    {
+                <div className='flex justify-start pt-4'>
+                    {/* {
                         statsBox === 1 ?
                             <div>All the league matches here</div>
                             : null
-                    }
+                    } */}
                     {
                         statsBox === 2 ?
-                            <div>All the league standings here</div>
+                            <LeagueStandings leagueStandings={leagueStandings} />
                             : null
                     }
                     {
