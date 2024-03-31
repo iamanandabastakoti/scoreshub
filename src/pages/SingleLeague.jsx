@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import LeagueStandings from '../components/LeagueStandings';
 import axios from 'axios';
+import LeagueStats from '../components/LeagueStats';
 
 const SingleLeague = () => {
     const { leagueID } = useParams();
@@ -51,14 +52,21 @@ const SingleLeague = () => {
     const singleLeagueData = topLeaguesList.filter(league => league.leagueId === leagueID);
     const [statsBox, setStatsBox] = useState(2);
     const [leagueStandings, setLeagueStandings] = useState([]);
+    const [leagueStats, setLeagueStats] = useState([]);
     const fetchStandings = async () => {
         const response = await axios.get(`https://apiv3.apifootball.com/?league_id=${leagueID}&action=get_standings&APIkey=${import.meta.env.VITE_API_KEY}`);
         setLeagueStandings(response.data);
         // console.log(leagueStandings);
     }
+    const fetchStats = async () => {
+        const response = await axios.get(`https://apiv3.apifootball.com/?action=get_topscorers&league_id=${leagueID}&APIkey=${import.meta.env.VITE_API_KEY}`);
+        setLeagueStats(response.data);
+        // console.log(leagueStats);
+    }
     useEffect(() => {
         window.scrollTo({ top: '0', behavior: 'smooth' });
         fetchStandings();
+        fetchStats();
     }, [leagueID]);
     // console.log(singleLeagueData)
     return (
@@ -84,7 +92,7 @@ const SingleLeague = () => {
                     <li className={`relative z-40 text-lg p-1 px-2 w-1/2 flex justify-center duration-500 ${statsBox === 2 ? `text-brandColor` : `text-primaryBg`}`} onClick={() => setStatsBox(2)}>Standings</li>
                     <li className={`relative z-40 text-lg p-1 px-2 w-1/2 flex justify-center duration-500 ${statsBox === 3 ? `text-brandColor` : `text-primaryBg`}`} onClick={() => setStatsBox(3)}>Stats</li>
                 </ul>
-                <div className='flex justify-start pt-4'>
+                <div className='flex justify-start pt-3 pb-6'>
                     {/* {
                         statsBox === 1 ?
                             <div>All the league matches here</div>
@@ -97,7 +105,7 @@ const SingleLeague = () => {
                     }
                     {
                         statsBox === 3 ?
-                            <div>All the league stats here</div>
+                            <LeagueStats leagueStats={leagueStats} />
                             : null
                     }
                 </div>
