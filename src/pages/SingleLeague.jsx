@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import LeagueStandings from '../components/LeagueStandings';
 import axios from 'axios';
 import LeagueStats from '../components/LeagueStats';
+import { FaAngleLeft } from "react-icons/fa";
 
 const SingleLeague = () => {
     const { leagueID } = useParams();
@@ -70,12 +71,17 @@ const SingleLeague = () => {
         fetchStats();
     }, [leagueID]);
     // console.log(singleLeagueData)
+    const navigate = useNavigate();
+    const toHome = () => {
+        navigate('/');
+    }
     return (
         <div className='flex flex-col gap-6'>
             {
                 singleLeagueData.map(({ index, leagueLogo, leagueName, leagueCountry }) => {
                     return (
                         <div key={index} className='flex justify-start items-center gap-2 p-1 bg-primaryBg text-primaryText rounded-lg'>
+                            <FaAngleLeft className='text-2xl' onClick={toHome} />
                             <img className='w-10 h-10' src={leagueLogo} alt="" />
                             <div className='flex flex-col justify-center'>
                                 <h3 className='text-lg font-semibold'>{leagueName}</h3>
