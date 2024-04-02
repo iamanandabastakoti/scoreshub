@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 
 const Sidebar = ({ sidebar, setSidebar }) => {
     // {
@@ -46,10 +46,12 @@ const Sidebar = ({ sidebar, setSidebar }) => {
                 {
                     topLeaguesList.map(({ index, leagueId, leagueLogo, leagueName }) => {
                         return (
-                            <Link to={`/league/${leagueId}`} key={index} className='flex gap-2 items-center text-brandColor border-b border-brandColor p-2' onClick={() => setSidebar(!sidebar)}>
+                            <NavLink to={`/league/${leagueId}`} key={index} className={({ isActive }) => [
+                                `flex gap-2 items-center text-brandColor border-b duration-500 border-brandColor p-2 ${isActive ? 'border-l-[6px] border-b-[6px] border-l-brandColor' : null}`
+                            ]} onClick={() => setSidebar(!sidebar)}>
                                 <img className='w-8 h-8' src={leagueLogo} alt={leagueName} />
                                 <span>{leagueName}</span>
-                            </Link>
+                            </NavLink>
                         )
                     })
                 }

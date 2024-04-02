@@ -5,7 +5,7 @@ const LeagueStandings = ({ leagueStandings }) => {
     return (
         <div className='flex flex-col w-full'>
             <table className='bg-primaryBg text-brandColor text-md'>
-                <tr className='bg-navbarBg text-primaryBg'>
+                <tr className='bg-navbarBg text-primaryBg font-Anta uppercase'>
                     <td className='p-1 w-[5%]'>Pos</td>
                     <td className='p-1 text-start w-[30%]'>Club</td>
                     <td className='text-center p-1 w-[5%]'>P</td>
@@ -13,10 +13,10 @@ const LeagueStandings = ({ leagueStandings }) => {
                     <td className='text-center p-1 w-[5%]'>D</td>
                     <td className='text-center p-1 w-[5%]'>L</td>
                     <td className='text-center p-1 w-[5%]'>GD</td>
-                    <td className='text-center p-1 w-[5%]'>Points</td>
+                    <td className='text-center p-1 w-[5%]'>Pts</td>
                 </tr>
                 {
-                    leagueStandings.map(({ team_id, overall_promotion, overall_league_position, team_badge, team_name, overall_league_payed, overall_league_W, overall_league_D, overall_league_L, overall_league_GF, overall_league_GA, overall_league_PTS }) => {
+                    leagueStandings.map(({ overall_promotion, overall_league_position, team_badge, team_name, overall_league_payed, overall_league_W, overall_league_D, overall_league_L, overall_league_GF, overall_league_GA, overall_league_PTS }) => {
                         return (
                             <tr className='text-sm border-b border-borderColor last:border-primaryBg'>
                                 <td className={`py-2 px-1 ${overall_promotion === 'Promotion - Champions League (Group Stage: )' ? 'bg-[#0824e0] text-primaryBg' : overall_promotion === 'Promotion - Champions League (Qualification: )' ? 'bg-[#2dabb1] text-primaryBg' : overall_promotion === 'Promotion - Europa League (Group Stage: )' ? 'bg-[#ff6d00] text-primaryBg' : 'bg-primaryBg'}`}>{overall_league_position}</td>

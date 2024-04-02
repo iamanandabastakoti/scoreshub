@@ -65,6 +65,7 @@ const SingleLeague = () => {
     }
     useEffect(() => {
         window.scrollTo({ top: '0', behavior: 'smooth' });
+        setStatsBox(2);
         fetchStandings();
         fetchStats();
     }, [leagueID]);
