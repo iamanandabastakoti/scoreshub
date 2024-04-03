@@ -82,10 +82,10 @@ const SingleLeague = () => {
                     return (
                         <div key={index} className='flex justify-start items-center gap-2 p-1 bg-primaryBg text-primaryText rounded-lg'>
                             <FaAngleLeft className='text-2xl' onClick={toHome} />
-                            <img className='w-10 h-10' src={leagueLogo} alt="" />
+                            <img className='w-10 sm:w-8 h-10 sm:h-8' src={leagueLogo} alt="" />
                             <div className='flex flex-col justify-center'>
-                                <h3 className='text-lg font-semibold'>{leagueName}</h3>
-                                <span className='text-sm text-subTitleColor'>{leagueCountry}</span>
+                                <h3 className='text-lg sm:text-md font-semibold'>{leagueName}</h3>
+                                <span className='text-sm sm:text-[12px] text-subTitleColor'>{leagueCountry}</span>
                             </div>
                         </div>
                     )
@@ -96,8 +96,8 @@ const SingleLeague = () => {
                     <div className={`absolute z-30 bg-primaryBg w-1/2 h-full duration-500 rounded-lg ${statsBox === 2 ? `left-0` : statsBox === 3 ? `left-1/2` : ``}`}>
                     </div>
                     {/* <li className={`relative z-40 text-lg p-1 px-2 w-1/3 flex justify-center duration-500 ${statsBox === 1 ? `text-brandColor` : `text-primaryBg`}`} onClick={() => setStatsBox(1)}>Matches</li> */}
-                    <li className={`relative z-40 text-lg p-1 px-2 w-1/2 flex justify-center duration-500 ${statsBox === 2 ? `text-brandColor` : `text-primaryBg`}`} onClick={() => setStatsBox(2)}>Standings</li>
-                    <li className={`relative z-40 text-lg p-1 px-2 w-1/2 flex justify-center duration-500 ${statsBox === 3 ? `text-brandColor` : `text-primaryBg`}`} onClick={() => setStatsBox(3)}>Stats</li>
+                    <li className={`relative z-40 text-lg sm:text-sm sm:p-2 p-1 px-2 w-1/2 flex justify-center duration-500 ${statsBox === 2 ? `text-brandColor` : `text-primaryBg`}`} onClick={() => setStatsBox(2)}>Standings</li>
+                    <li className={`relative z-40 text-lg sm:text-sm sm:p-2 p-1 px-2 w-1/2 flex justify-center duration-500 ${statsBox === 3 ? `text-brandColor` : `text-primaryBg`}`} onClick={() => setStatsBox(3)}>Stats</li>
                 </ul>
                 <div className='flex justify-start pt-3 pb-6'>
                     {/* {

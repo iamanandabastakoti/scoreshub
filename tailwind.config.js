@@ -20,6 +20,15 @@ export default {
         borderColor: "#C0C0C0",
         subTitleColor: "#536878",
       },
+      screens: {
+        sm: "320px", //small mobile
+        med: "375px", //medium mobile
+        l: "425px", //large mobile
+        tab: "768px", //tablets
+        laptop: "1024px", //normal laptop
+        xlarge: "1440px", //large laptop
+        xxlarge: "2560px", //extra large(4K) screens
+      },
     },
   },
   plugins: [],

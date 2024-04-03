@@ -16,7 +16,7 @@ const App = () => {
   return (
     <div className='bg-brandColor text-primaryBg font-Prompt flex flex-col'>
       <Navbar toggleSidebar={toggleSidebar} setSidebar={setSidebar} />
-      <div className='pt-16 pb-8 px-2 min-h-screen'>
+      <div className='pt-16 pb-8 px-2 min-h-screen tab:flex tab:justify-center tab:w-full'>
         <Sidebar sidebar={sidebar} setSidebar={setSidebar} />
         <Routes>
           <Route index element={<Home />} />
