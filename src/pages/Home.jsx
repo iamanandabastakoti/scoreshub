@@ -68,7 +68,7 @@ const Home = () => {
         fetchStandings();
     }, [])
     return (
-        <div className='flex flex-col gap-2 tab:gap-4 tab:w-9/12'>
+        <div className='flex flex-col laptop:-center gap-2 tab:gap-4 tab:w-9/12 laptop:w-7/12'>
             <h4 className='text-xl sm:text-[16px] tab:text-2xl font-MontserratAlternate font-bold underline px-2 tab:px-4'>Top Leagues Standings</h4>
             <div className='flex flex-col gap-6'>
                 {
@@ -85,7 +85,7 @@ const Home = () => {
                                     </div>
                                     <FaAngleRight className='text-2xl tab:text-4xl' />
                                 </Link>
-                                <table className='bg-primaryBg text-brandColor text-md sm:text-[11px] tab:text-lg'>
+                                <table className='bg-primaryBg text-brandColor text-md sm:text-[11px] tab:text-lg laptop:w-full'>
                                     <tr className='bg-navbarBg text-primaryBg font-Anta uppercase'>
                                         <td className='p-1 w-[5%]'>Pos</td>
                                         <td className='p-1 text-start w-[30%]'>Club</td>

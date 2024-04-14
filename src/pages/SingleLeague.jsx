@@ -96,8 +96,8 @@ const SingleLeague = () => {
                     <div className={`absolute z-30 bg-primaryBg w-1/2 h-full duration-500 rounded-lg ${statsBox === 2 ? `left-0` : statsBox === 3 ? `left-1/2` : ``}`}>
                     </div>
                     {/* <li className={`relative z-40 text-lg p-1 px-2 w-1/3 flex justify-center duration-500 ${statsBox === 1 ? `text-brandColor` : `text-primaryBg`}`} onClick={() => setStatsBox(1)}>Matches</li> */}
-                    <li className={`relative z-40 text-lg sm:text-sm sm:p-2 p-1 px-2 w-1/2 flex justify-center duration-500 ${statsBox === 2 ? `text-brandColor` : `text-primaryBg`}`} onClick={() => setStatsBox(2)}>Standings</li>
-                    <li className={`relative z-40 text-lg sm:text-sm sm:p-2 p-1 px-2 w-1/2 flex justify-center duration-500 ${statsBox === 3 ? `text-brandColor` : `text-primaryBg`}`} onClick={() => setStatsBox(3)}>Stats</li>
+                    <li className={`relative z-40 text-lg sm:text-sm sm:p-2 p-1 px-2 w-1/2 flex justify-center duration-500 laptop:hover:cursor-pointer ${statsBox === 2 ? `text-brandColor` : `text-primaryBg`}`} onClick={() => setStatsBox(2)}>Standings</li>
+                    <li className={`relative z-40 text-lg sm:text-sm sm:p-2 p-1 px-2 w-1/2 flex justify-center duration-500 laptop:hover:cursor-pointer ${statsBox === 3 ? `text-brandColor` : `text-primaryBg`}`} onClick={() => setStatsBox(3)}>Stats</li>
                 </ul>
                 <div className='flex justify-start pt-3 pb-6'>
                     {/* {
